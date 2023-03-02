@@ -23,13 +23,12 @@ jobs:
       - name: Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.3.10"
+          flutter-version: "3.7.5"
           channel: "stable"
           cache: true
       - run: flutter --version
       - run: flutter pub get
       - run: flutter pub run build_runner build
-      - run: flutter pub run slang
       - run: flutter build web --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
       - uses: actions/upload-pages-artifact@v1
         with:
