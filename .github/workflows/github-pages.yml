@@ -20,6 +20,10 @@ jobs:
         run: |
           REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
           echo ::set-output name=repository::$REPOSITORY
+      - name: Create dot env file
+        run: |
+          touch .env
+          echo "QIITA_TOKEN=${{ secrets.QIITA_TOKEN }}" >> .env
       - name: Flutter
         uses: subosito/flutter-action@v2
         with:
